@@ -5,7 +5,7 @@ import noteContext from '../context/notes/noteContext';
 const NoteItem = (props) => {
     const context = useContext(noteContext);
     // eslint-disable-next-line
-    const { deleteNote, editNote } = context;
+    const { deleteNote } = context;
 
     return (
         <div className='col-md-3 '>

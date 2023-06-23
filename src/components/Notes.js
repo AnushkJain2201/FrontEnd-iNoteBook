@@ -50,27 +50,30 @@ const Notes = () => {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="etitle" name="etitle" onChange={onChange} value={note.etitle} />
+                                    <input type="text" className="form-control" id="etitle" name="etitle" onChange={onChange} value={note.etitle} required minLength={5}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Description</label>
-                                    <input type="text" className="form-control" id="edescripiton" name="edescription" onChange={onChange} value={note.edescription} />
+                                    <input type="text" className="form-control" id="edescripiton" name="edescription" onChange={onChange} value={note.edescription} required minLength={5}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label">Tag</label>
-                                    <input type="text" className="form-control" id="etag" name="etag" onChange={onChange} value={note.etag} />
+                                    <input type="text" className="form-control" id="etag" name="etag" onChange={onChange} value={note.etag} required minLength={3}/>
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleClick}>Update Notes</button>
+                            <button disabled = {note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-primary" onClick={handleClick}>Update Notes</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="row my-3 mx-3">
                 <h2>Your Notes</h2>
+                <div className="container mx-2">
+                {notes.length === 0 && 'No Notes To Display'}
+                </div>
                 {notes.map((notes) => {
                     return <NoteItem key={notes._id} updateNote={updateNote} notes={notes} />
                 })}
