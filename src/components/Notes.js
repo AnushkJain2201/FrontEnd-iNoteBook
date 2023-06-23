@@ -5,12 +5,13 @@ import NoteItem from './NoteItem';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, setNotes } = context;
+    // eslint-disable-next-line
+    const {notes} = context;
     return (
         <div className="row my-3 mx-3">
             <h2>Your Notes</h2>
             {notes.map((notes) => {
-                return <NoteItem notes = {notes}/>
+                return <NoteItem key = { notes._id } notes = {notes}/>
             })}
         </div>
     )
