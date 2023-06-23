@@ -12,25 +12,26 @@ import Alert from './components/Alert';
 import { useState } from 'react';
 
 
+
 function App() {
 
-  const [alert, setAlert] = useState(null);
+  const [alert, setAlert] = useState();
 
-  const showAlert = (message , type) => {
-    setAlert({
-      msg:message,
-      type:type
-    })
-    setTimeout(() => {
-      setAlert(null)
-    } , 1500)
-  }
+      const showAlert = (message , type) => {
+        setAlert({
+          msg:message,
+          type:type
+        })
+        setTimeout(() => {
+          setAlert(null)
+        } , 1500)
+      }
   return (
     <>
       <NoteState>
         <BrowserRouter>
           <NavBar />
-          <Alert alert = {alert}/>
+          <Alert alert={alert} />
           <div className="container">
             <Routes>
               <Route path="/*" element={<Home />} />

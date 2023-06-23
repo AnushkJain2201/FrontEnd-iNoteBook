@@ -52,9 +52,39 @@ const NoteState = (props) => {
         }
       ]
 
+      // SHowing LAertas 
+      
+
+
       const [notes, setNotes] = useState(notesInitial);
+
+      // Add A Note
+      const addNote = (title, description, tag) => {
+        // Todo API call
+        let note = {
+          "_id": "64919816c268b8b983c47d3bj",
+          "user": "649054a30ae2eea5518235ba",
+          "title": title,
+          "description": description,
+          "tag": tag,
+          "date": "2023-06-20T12:14:14.097Z",
+          "__v": 0
+        };
+        setNotes(notes.concat(note))
+      }
+
+      // Delete A Note
+      const deleteNote = (id) => {
+        
+      }
+
+      // Edit A Note
+      const editNote = (id) => {
+        
+      }
+
     return (
-        <noteContext.Provider value = {{notes , setNotes}}>
+        <noteContext.Provider value = {{notes, addNote, deleteNote, editNote}}>
             {props.children}
         </noteContext.Provider>
     )
