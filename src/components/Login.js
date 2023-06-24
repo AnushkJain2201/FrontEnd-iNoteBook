@@ -24,12 +24,12 @@ const Login = () => {
         });
         const json = await response.json();
         console.log(json);
-        if(json.success === true){
+        if (json.success === true) {
             //Save the authtoken and redirect 
-            localStorage.setItem('token' , json.authtoken)
+            localStorage.setItem('token', json.authtoken)
             navigate('/')
         }
-        else{
+        else {
             alert("Invalid Credentials")
         }
     }
