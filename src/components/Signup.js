@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
-  
+const Signup = (props) => {
+
   const host = 'http://localhost:5000';
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
@@ -21,19 +21,21 @@ const Signup = () => {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify({ name:credentials.name, email: credentials.email, password: credentials.password }),
+      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password }),
     });
     const json = await response.json();
     console.log(json);
-    if(json.success){
+    if (json.success) {
       //Save the authtoken and redirect 
       localStorage.setItem('token', json.authtoken)
-      navigate('/')
+      navigate('/login');
+      props.showAlert("Account Created" , "success");
+
     }
-    else{
-      alert("Invalid Credentials");
+    else {
+      props.showAlert("Invalid Credentials" , "danger");
     }
-    
+
   }
 
   return (
@@ -41,20 +43,20 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" aria-describedby="emailHelp" name='name' onChange={onChange} required minLength={5}/>
+          <input type="text" className="form-control" id="name" aria-describedby="emailHelp" name='name' onChange={onChange} required minLength={5} />
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' onChange={onChange} required minLength={5}/>
+          <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' onChange={onChange} required minLength={5} />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" name='password' onChange={onChange} required minLength={5}/>
+          <input type="password" className="form-control" id="password" name='password' onChange={onChange} required minLength={5} />
         </div>
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-          <input type="cpassword" className="form-control" id="cpassword" name='cpassword' onChange={onChange} required minLength={5}/>
+          <input type="cpassword" className="form-control" id="cpassword" name='cpassword' onChange={onChange} required minLength={5} />
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>
