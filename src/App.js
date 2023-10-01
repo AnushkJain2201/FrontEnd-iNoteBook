@@ -12,6 +12,8 @@ import Alert from './components/Alert';
 import { useState } from 'react';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import React from 'react';
+import './styles.css';
 
 
 
