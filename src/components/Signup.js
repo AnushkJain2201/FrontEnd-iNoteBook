@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../styles.css';
+
 
 const Signup = (props) => {
 
@@ -39,8 +41,8 @@ const Signup = (props) => {
   }
 
   return (
-    <div className='container my-5'>
-      <h2 className='my-3'>SignUp To Continue In iNoteBook</h2>
+    <div className='container bg-gray-100 bg-midnight text-tahiti p-4 border-8 w-9/12 '>
+      <div className=' my-10 text-3xl font-bold'>SignUp To Continue In iNoteBook</div>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
@@ -60,7 +62,7 @@ const Signup = (props) => {
           <input type="cpassword" className="form-control" id="cpassword" name='cpassword' onChange={onChange} required minLength={5} />
         </div>
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className=" mt-3 border border-blue-500  bg-blue-500 text-white py-2 px-4 rounded">Submit</button>
       </form>
     </div>
   )
